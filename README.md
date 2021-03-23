@@ -1,1 +1,1 @@
-# smartprice-sdk-web
+# smartprice-sdk
