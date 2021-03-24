@@ -18,7 +18,7 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm test
-        working-directory: /src
+        working-directory: smartprice-sdk/src
 
   publish-npm:
     needs: build
@@ -30,7 +30,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm publish
-        working-directory: /src
+        working-directory: smartprice-sdk/src
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
