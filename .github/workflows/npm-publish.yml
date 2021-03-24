@@ -17,7 +17,9 @@ jobs:
         with:
           node-version: 12
       - run: npm ci
+        working-directory: src
       - run: npm test
+        working-directory: src
 
   publish-npm:
     needs: build
@@ -29,6 +31,7 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm publish
+        working-directory: src
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
