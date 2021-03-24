@@ -1,5 +1,4 @@
-# [SmartPRICE™](https://smartprice.myrx.io/)
-## SmartPRICE Web SDK
+# [SmartPRICE™](https://smartprice.myrx.io/) SmartPRICE Web SDK
 ***includes***:
 - Embedded Registration Form to sign up users to SmartPRICE™ by invoking a button
 - APIs to register users to SmartPRICE™ with integrated verification system through SMS
