@@ -42,9 +42,11 @@ const receiveMessage = (event) => {
 
 ```js
 
-if (event.data.message === 'closeModal'){
-  document.querySelector('.iframe-lightbox-link').lightbox.close();
-}
+const receiveMessage = (event) => {
+  if (event.data.message === 'closeModal'){
+    document.querySelector('.iframe-lightbox-link').lightbox.close();
+  }
+};
 
 ```
 
