@@ -49,6 +49,9 @@ message from the modal window, you need to register the receiveMessage function
         'memberId'
       ).innerText = `SmartPRICE MemberId: ${event.data.value.smartPriceMemberId}`;
     }
+    if (event.data.message === 'closeModal') {
+      document.querySelector('.iframe-lightbox-link').lightbox.close();
+    }
   };
 </script>
 ```
