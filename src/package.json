@@ -1,6 +1,6 @@
 {
   "name": "phx-smartprice",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Smartprice Web SDK",
   "main": "index.js",
   "scripts": {
