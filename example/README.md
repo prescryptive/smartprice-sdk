@@ -37,7 +37,9 @@ and add the following script tags at the end body. To receive the confirmation
 message from the modal window, you need to register the receiveMessage function
 
 ```html
-<script src="https://test.smartprice.myrx.io/modal-demo/bundle.js"></script>
+<script src="https://test.smartprice.myrx.io/modal-demo/bundle.js"></script> // for test environment
+<script src="https://smartprice.myrx.io/modal-demo/bundle.js"></script> // for prod environment
+
 <script>
   /** Your implementation to receive the memberId
    * from SmartPRICE

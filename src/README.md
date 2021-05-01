@@ -41,11 +41,11 @@ const receiveMessage = (event) => {
 **to receive modalClose message as a callback**
 
 ```js
-
-if (event.data.message === 'closeModal'){
-  document.querySelector('.iframe-lightbox-link').lightbox.close();
-}
-
+const receiveMessage = (event) => {
+  if (event.data.message === 'closeModal'){
+    document.querySelector('.iframe-lightbox-link').lightbox.close();
+  }
+};
 ```
 
 ### `index.html`
