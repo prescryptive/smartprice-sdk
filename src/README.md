@@ -38,6 +38,16 @@ const receiveMessage = (event) => {
 };
 ```
 
+**to receive modalClose message as a callback**
+
+```js
+
+if (event.data.message === 'closeModal'){
+document.querySelector('.iframe-lightbox-link').lightbox.close();
+}
+
+```
+
 ### `index.html`
 
 **Add an element `<div>` to your markup with the smartprice-button class**
