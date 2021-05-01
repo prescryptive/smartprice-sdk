@@ -68,6 +68,9 @@
                         if (event.data.message === 'confirmation'){
                             console.log(event.data.value.smartPriceMemberId);
                         }
+                        if (event.data.message === 'closeModal') {
+                            document.querySelector('.iframe-lightbox-link').lightbox.close();
+                        }
                     }
                     &lt;/script&gt;
             </code>
@@ -83,6 +86,9 @@
             if (event.data.message === 'confirmation'){
                 console.log(event.data.value.smartPriceMemberId);
                 document.getElementById('memberId').innerText = `SmartPRICE MemberId: ${event.data.value.smartPriceMemberId}`
+            }
+            if (event.data.message === 'closeModal') {
+                document.querySelector('.iframe-lightbox-link').lightbox.close();
             }
         }
     </script>
