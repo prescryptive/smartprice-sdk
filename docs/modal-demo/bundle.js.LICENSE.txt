@@ -1,0 +1,10 @@
+/*!
+ * @see {@link https://github.com/englishextra/iframe-lightbox}
+ * modified Simple lightbox effect in pure JS
+ * @see {@link https://github.com/squeral/lightbox}
+ * @see {@link https://github.com/squeral/lightbox/blob/master/lightbox.js}
+ * @params {Object} elem Node element
+ * @params {Object} settings object
+ * el.lightbox = new IframeLightbox(elem, settings)
+ * passes jshint
+ */

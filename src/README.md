@@ -61,7 +61,7 @@ const receiveMessage = (event) => {
 <div class="smartprice-button blue"></div>
 ```
 
-#### Live demo can be viewed [here](https://smartprice.test.myrx.io/modal-demo)
+#### Live demo can be viewed [here](https://prescryptive.github.io/smartprice-sdk/modal-demo)
 #### Example usage can be found [here](https://github.com/prescryptive/smartprice-sdk/tree/master/example)
 &nbsp;
 
