@@ -37,8 +37,8 @@ and add the following script tags at the end body. To receive the confirmation
 message from the modal window, you need to register the receiveMessage function
 
 ```html
-<script src="https://raw.githubusercontent.com/prescryptive/smartprice-sdk/master/example/dist/bundle.js"></script> // for prod environment
-<script src="https://test.smartprice.myrx.io/modal-demo/bundle.js"></script> // for test environment
+<script src="https://prescryptive.github.io/smartprice-sdk/modal/bundle.js"></script> // for prod environment
+<script src="https://prescryptive.github.io/smartprice-sdk/modal-demo/bundle.js"></script> // for test environment
 <script>
   /** Your implementation to receive the memberId
    * from SmartPRICE
