@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Prescryptive - SmartPrice&trade; SDK Sample Implementation Page</title>
+        <link rel="icon" type="image/png" href="favicon.png">
+        <link rel="apple-touch-icon" href="favicon.png">
+        <meta name="description" content="Prescryptive">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .light-bg{
+                background-color: #fff; padding: 40px;
+            }
+            .dark-bg{
+                background-color: #4E4E4E; padding: 40px
+            }
+            .smartprice-button {
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="light-bg">
+                <!-- Regular button -->
+                <h2>Default Button</h2>
+                <code>
+                    &lt;div class="smartprice-button"&gt;&lt;/div&gt;  
+                </code>
+                <div class="smartprice-button"></div>
+            </div>
+            <div class="light-bg">
+                <!-- Blue button -->
+                <h2>Blue Button</h2>
+                <code>
+                    &lt;div class="smartprice-button blue"&gt;&lt;/div&gt;  
+                </code>
+                <br />
+                <div class="smartprice-button blue"></div>
+            </div>
+
+            <div class="dark-bg">
+                <!-- Dark theme button -->
+                <h2 style="color: #fff;">Dark Theme Button</h2>
+                <code style="color: #fff;">
+                    &lt;div class="smartprice-button dark"&gt;&lt;/div&gt;  
+                </code>
+                <br />
+                <div class="smartprice-button dark"></div>
+            </div>
+            <div class="light-bg">
+                <h2>Sample with pre-filled form</h2>
+                <pre>
+                    <code>
+    &lt;div class="smartprice-button" 
+            data-firstname="John" 
+            data-lastname="Doe" 
+            data-phone="2233445566" 
+            data-email="test@email.com" 
+            data-dob="2000-08-22"&gt;
+    &lt;/div&gt;  
+                    </code>
+                </pre>
+                <br />
+                <div class="smartprice-button" 
+                    data-firstname="John" 
+                    data-lastname="Doe" 
+                    data-phone="2233445566" 
+                    data-email="test@email.com" 
+                    data-dob="2000-08-22"></div>
+                </div>
+        </div>
+        <div>
+            <h1 id="memberId"></h1>
+        </div>
+        <div class="light-bg">
+            <h4>Add the following snippet after the body tag:</h4>
+            <pre>
+                <code>
+    &lt;script src="https://prescryptive.github.io/smartprice-sdk/modal/bundle.js"&gt;&lt;/script&gt; // prod environment
+    &lt;script src="https://prescryptive.github.io/smartprice-sdk/modal-demo/bundle.js"&gt;&lt;/script&gt; // test environment
+    &lt;script&gt;
+        /** Your implementation to receive the memberId
+        * from SmartPRICE
+        */
+
+        const receiveMessage = (event) =&gt; {
+            if (event.data.message === 'confirmation'){
+                console.log(event.data.value.smartPriceMemberId);
+            }
+        }
+    &lt;/script&gt;
+                </code>
+            </pre>
+        </div>
+    </body>
+    <script src="bundle.js"></script>
+    <script>
+        /** Your implementation to receive the memberId
+        * from SmartPRICE
+        */
+        const receiveMessage = (event) => {
+            if (event.data.message === 'confirmation'){
+                console.log(event.data.value.smartPriceMemberId);
+                document.getElementById('memberId').innerText = `SmartPRICE MemberId: ${event.data.value.smartPriceMemberId}`
+            }
+            if (event.data.message === 'closeModal') {
+                document.querySelector('.iframe-lightbox-link').lightbox.close();
+            }
+        }
+    </script>
+</html>
+
