@@ -14,14 +14,16 @@ export const getAttributesData = el => {
   const email = el.getAttribute("data-email");
   const phone = el.getAttribute("data-phone");
   const dateOfBirth = el.getAttribute("data-dob");
+  const brokerId = el.getAttribute("data-source");
 
   const fn = firstName ? firstName.match(nameRegex) : "";
   const ln = lastName ? lastName.match(nameRegex) : "";
   const em = email ? email.match(emailRegex) : "";
   const ph = phone ? phone.match(tenDigitsRegex) : "";
   const dob = dateOfBirth ? dateOfBirth.match(dateRegex) : "";
+  const source = brokerId ? brokerId : "";
   
-  return {fn,ln,em,ph,dob}
+  return {fn,ln,em,ph,dob,source}
 }
 
 export const checkFormData = (firstName, lastName, email, phone, dateOfBirth) => {
@@ -34,12 +36,13 @@ export const checkFormData = (firstName, lastName, email, phone, dateOfBirth) =>
   return {fn,ln,em,ph,dob}
 }
 
-export const buildFormQuery = (firstName, lastName, email, phone, dateOfBirth, MODAL_URL) => {
+export const buildFormQuery = (firstName, lastName, email, phone, dateOfBirth, MODAL_URL, brokerId) => {
   const fn = firstName ? `?fn=${firstName}` : '';
   const ln = lastName ? `&ln=${lastName}` : '';
   const em = email ? `&em=${email}` : '';
   const ph = phone ? `&ph=${phone}` : '';
   const dob = dateOfBirth ? `&dob=${dateOfBirth}` : '';
   const url = MODAL_URL ? MODAL_URL : '';
-  return `${url}/${fn}${ln}${em}${ph}${dob}`;
+  const source = brokerId ? `&bi=${brokerId}` : '';
+  return `${url}/${fn}${ln}${em}${ph}${dob}${source}`;
 }

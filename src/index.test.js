@@ -39,7 +39,7 @@ describe('SDK Modal can', () => {
   })
 
   it('init a smartprice button with params', () => {
-    const endpoint = `https://test.smartprice.myrx.io/sdk-modal/?fn=Phil&ln=Jones&em=phil.jones@email.com&ph=1234567890&dob=2000-08-21`;
+    const endpoint = `https://smartprice.myrx.io/sdk-modal/?fn=Phil&ln=Jones&em=phil.jones@email.com&ph=1234567890&dob=2000-08-21`;
     const div = document.createElement('div');
     div.className = "smartprice-button";
     document.body.appendChild(div);

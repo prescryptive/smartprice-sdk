@@ -30,8 +30,9 @@ describe('buildFormQuery', () => {
     const ph = "12";
     const em = "mail";
     const dob = "date";
-    const url = "http://sample"
-    expect(buildFormQuery(fn, ln, em, ph, dob, url)).toEqual(`${url}/?fn=${fn}&ln=${ln}&em=${em}&ph=${ph}&dob=${dob}`);
+    const url = "http://sample";
+    const source = "brokerid";
+    expect(buildFormQuery(fn, ln, em, ph, dob, url, source)).toEqual(`${url}/?fn=${fn}&ln=${ln}&em=${em}&ph=${ph}&dob=${dob}&bi=${source}`);
   })
 
   it('returns expected string without params', () => {
