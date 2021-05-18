@@ -15,4 +15,9 @@ describe('dateParser', () => {
     expect(getDateOfBirth(new Date().toString().split('T')[0])).toEqual(null);
   })
 
+  it('getDateOfBirth cannot set younger than 13 years', () => {
+    expect(getDateOfBirth('2011/08/22')).toEqual(null);
+    expect(getDateOfBirth('2008/08/22')).toEqual(null);
+  })
+
 });
