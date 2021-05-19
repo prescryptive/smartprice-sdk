@@ -10,13 +10,11 @@ function dateOfBirth(dateOfBirthText) {
   const month = today.getMonth();
   const date = today.getDate();
   const minDateOfBirth = new Date(year - minAge, month, date);
-  if (dob > today) {
-    return null;
-  }
 
   if (dob > minDateOfBirth) {
-    return null;
+    return { value: dob, error: 'You must be older than 13' };
   }
+
   return dob;
 }
 

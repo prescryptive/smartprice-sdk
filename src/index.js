@@ -61,6 +61,7 @@ export const registerUser = (form, env='prod', brokerId) => {
     let dob = dateParser.getDateOfBirth(form.dateOfBirth);
     let phone = phoneParser.getPhoneNumber(form.phoneNumber);
     if (!dob || !phone) return null;
+    if (dob.error) return dob.error;
     return new Promise((resolve, reject) => {
         axios
         .post(`${url}/smart-price/register`, {
@@ -157,6 +158,7 @@ export const registerAppUser = (form, deviceToken, env='prod', brokerId) => {
   let dob = dateParser.getDateOfBirth(form.dateOfBirth);
   let phone = phoneParser.getPhoneNumber(form.phoneNumber);
   if (!dob || !phone) return null;
+  if (dob.error) return dob.error;
   return new Promise((resolve, reject) => {
       axios
       .post(`${url}/smart-price/app-register`, 
