@@ -1,6 +1,5 @@
 // Copyright 2021 Prescryptive Health Inc
-const maxAge = 65;
-const minAge = 18;
+const minAge = 13;
 function dateOfBirth(dateOfBirthText) {
   if (isNaN(Date.parse(dateOfBirthText))){
     return null;
@@ -11,10 +10,11 @@ function dateOfBirth(dateOfBirthText) {
   const month = today.getMonth();
   const date = today.getDate();
   const minDateOfBirth = new Date(year - minAge, month, date);
-  const maxDateOfBirth = new Date(year - maxAge, month, date);
-  if (dob > minDateOfBirth || dob < maxDateOfBirth) {
-    return null;
+
+  if (dob > minDateOfBirth) {
+    return { value: dob, error: 'You must be older than 13' };
   }
+
   return dob;
 }
 

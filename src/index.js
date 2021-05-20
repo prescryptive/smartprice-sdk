@@ -25,8 +25,9 @@ export const registerPopupIframe = () =>{
  * @param {string} email to fill the field in form
  * @param {string} phone to fill the field form (10 digits)
  * @param {string} dateOfBirth to fill the field form with format (YYYY-MM-DD)
+ * @param {string} source broker id used by Prescryptive partner
  */
-export const init = (firstName, lastName, email, phone, dateOfBirth, env='prod') => {
+export const init = (firstName, lastName, email, phone, dateOfBirth, env='prod', source) => {
 
   [].forEach.call(document.getElementsByClassName('smartprice-button'), function (buttonContainer) {
 
@@ -38,8 +39,10 @@ export const init = (firstName, lastName, email, phone, dateOfBirth, env='prod')
     const em = dataAttributes.em ? dataAttributes.em : dataInit.em;
     const ph = dataAttributes.ph ? dataAttributes.ph : dataInit.ph;
     const dob = dataAttributes.dob ? dataAttributes.dob : dataInit.dob;
+    const brokerId = dataAttributes.source ? dataAttributes.source : source;
+
     const url = env === 'test' ? TEST_MODAL_URL : MODAL_URL;
-    const endpoint = buildFormQuery(fn, ln, em, ph, dob, url);
+    const endpoint = buildFormQuery(fn, ln, em, ph, dob, url, brokerId);
 
     const button = document.createElement('a');
     button.className = "iframe-lightbox-link";
@@ -53,11 +56,12 @@ export const init = (firstName, lastName, email, phone, dateOfBirth, env='prod')
     registerPopupIframe();
 }
 
-export const registerUser = (form, env='prod') => {
+export const registerUser = (form, env='prod', brokerId) => {
     let url = env === 'test' ? TEST_API_URL : API_URL;
     let dob = dateParser.getDateOfBirth(form.dateOfBirth);
     let phone = phoneParser.getPhoneNumber(form.phoneNumber);
     if (!dob || !phone) return null;
+    if (dob.error) return dob.error;
     return new Promise((resolve, reject) => {
         axios
         .post(`${url}/smart-price/register`, {
@@ -67,6 +71,7 @@ export const registerUser = (form, env='prod') => {
             dateOfBirth: dob,
             phoneNumber: phone,
             verifyCode: form.verifyCode,
+            source: brokerId
         })
         .then((resp) => {
             resolve(resp.data);
@@ -148,11 +153,12 @@ export const getDeviceToken = (code, number, env='prod') => {
   });
 }
 
-export const registerAppUser = (form, deviceToken, env='prod') => {
+export const registerAppUser = (form, deviceToken, env='prod', brokerId) => {
   let url = env === 'test' ? TEST_API_URL : API_URL;
   let dob = dateParser.getDateOfBirth(form.dateOfBirth);
   let phone = phoneParser.getPhoneNumber(form.phoneNumber);
   if (!dob || !phone) return null;
+  if (dob.error) return dob.error;
   return new Promise((resolve, reject) => {
       axios
       .post(`${url}/smart-price/app-register`, 
@@ -162,6 +168,7 @@ export const registerAppUser = (form, deviceToken, env='prod') => {
           email: form.email,
           dateOfBirth: dob,
           phoneNumber: phone,
+          source: brokerId
       },{
         headers: {
           "x-prescryptive-device-token": deviceToken
